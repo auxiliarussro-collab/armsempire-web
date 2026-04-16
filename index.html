@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arms Empire: Profit of War — Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      #0a0a08;
+      --surface: #111210;
+      --border:  #2a2a24;
+      --accent:  #c8a84b;
+      --text:    #d4d0c4;
+      --muted:   #6a6860;
+      --glow:    rgba(200,168,75,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(200,168,75,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(200,168,75,0.03) 1px, transparent 1px);
+      background-size: 48px 48px; pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
+      pointer-events: none; z-index: 0;
+    }
+    .corner { position: fixed; width: 36px; height: 36px; z-index: 10; opacity: 0.35; }
+    .corner--tl { top:20px; left:20px;   border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
+    .corner--tr { top:20px; right:20px;  border-top:1px solid var(--accent); border-right:1px solid var(--accent); }
+    .corner--bl { bottom:20px; left:20px;  border-bottom:1px solid var(--accent); border-left:1px solid var(--accent); }
+    .corner--br { bottom:20px; right:20px; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
+    .page { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 24px 80px; }
+    .label { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--muted); text-transform: uppercase; margin-bottom: 24px; animation: fadeUp 1s ease both; }
+    .logo-img { width: clamp(200px, 40vw, 380px); height: auto; filter: drop-shadow(0 0 40px rgba(200,168,75,0.25)) drop-shadow(0 0 80px rgba(200,100,30,0.15)); animation: fadeUp 1s 0.2s ease both; margin-bottom: 8px; }
+    .divider { width: 100%; max-width: 440px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 28px auto; animation: fadeUp 1s 0.35s ease both; }
+    .tagline { font-size: clamp(13px, 2vw, 15px); font-weight: 300; letter-spacing: 0.06em; color: var(--muted); text-align: center; max-width: 460px; line-height: 1.8; margin-bottom: 40px; animation: fadeUp 1s 0.45s ease both; }
+    .badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--border); background: var(--surface); padding: 9px 22px; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; margin-bottom: 48px; animation: fadeUp 1s 0.55s ease both; position: relative; overflow: hidden; }
+    .badge::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, var(--glow), transparent); transform: translateX(-100%); animation: shimmer 3s 2s infinite; }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; flex-shrink: 0; }
+    .socials { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; animation: fadeUp 1s 0.7s ease both; }
+    .social-link { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; border: 1px solid var(--border); color: var(--muted); text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .social-link:hover { color: var(--accent); border-color: var(--accent); background: var(--glow); }
+    .footer { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--muted); opacity: 0.4; white-space: nowrap; z-index: 10; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+    @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(200%); } }
+  </style>
+</head>
+<body>
+  <div class="corner corner--tl"></div>
+  <div class="corner corner--tr"></div>
+  <div class="corner corner--bl"></div>
+  <div class="corner corner--br"></div>
+  <main class="page">
+    <p class="label">// Auxiliarus — Game Development</p>
+    <img class="logo-img" src="logo.png" alt="Arms Empire: Profit of War" />
+    <div class="divider"></div>
+    <p class="tagline">
+      Build a global arms corporation. Supply nations, exploit conflicts,<br>
+      and watch the world change based on your deals.
+    </p>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      In Development — Coming Soon
+    </div>
+    <div class="socials">
+      <a class="social-link" href="https://x.com/ArmsEmpireGame" target="_blank">𝕏 &nbsp;Twitter / X</a>
+      <a class="social-link" href="https://www.instagram.com/armsempire/" target="_blank">IG &nbsp;Instagram</a>
+      <a class="social-link" href="https://bsky.app/profile/armsempire.bsky.social" target="_blank">☁ &nbsp;Bluesky</a>
+      <a class="social-link" href="https://www.youtube.com/channel/UCu4IndwXBjUkiCHU9SibaEw" target="_blank">▶ &nbsp;YouTube</a>
+      <a class="social-link" href="https://www.linkedin.com/company/arms-empire-game" target="_blank">in &nbsp;LinkedIn</a>
+    </div>
+  </main>
+  <footer class="footer">© 2025 Auxiliarus s.r.o. — armsempiregame.com</footer>
+</body>
+</html>
